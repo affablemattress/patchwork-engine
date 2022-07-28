@@ -1,6 +1,5 @@
 #pragma once
 #include "V2.h"
-#include "Component.h"
 #include "Transform.h"
 
 #include <stdint.h>

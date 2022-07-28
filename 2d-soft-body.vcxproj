@@ -58,7 +58,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)src\; $(SolutionDir)include\;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)src\; $(SolutionDir)include\; $(SolutionDir)src\utilities\; $(SolutionDir)src\components\;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -74,7 +74,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)src\; $(SolutionDir)include\;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)src\; $(SolutionDir)include\; $(SolutionDir)src\utilities\; $(SolutionDir)src\components\;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -86,19 +86,19 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\Application.cpp" />
-    <ClCompile Include="src\Component.cpp" />
+    <ClCompile Include="src\components\Component.cpp" />
     <ClCompile Include="src\Entry Point.cpp" />
     <ClCompile Include="src\GameObject.cpp" />
     <ClCompile Include="src\V2.cpp" />
-    <ClCompile Include="src\UniqueID.cpp" />
-    <ClCompile Include="src\Transform.cpp" />
+    <ClCompile Include="src\utilities\UniqueID.cpp" />
+    <ClCompile Include="src\components\Transform.cpp" />
     <ClCompile Include="src\WindowManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="lib\raylib.lib" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Component.h" />
+    <ClInclude Include="src\components\Component.h" />
     <ClInclude Include="src\Application.h" />
     <ClInclude Include="src\Engine.h" />
     <ClInclude Include="src\GameObject.h" />
@@ -108,8 +108,8 @@
     <ClInclude Include="include\raymath.h" />
     <ClInclude Include="include\rlgl.h" />
     <ClInclude Include="src\V2.h" />
-    <ClInclude Include="src\UniqueID.h" />
-    <ClInclude Include="src\Transform.h" />
+    <ClInclude Include="src\utilities\UniqueID.h" />
+    <ClInclude Include="src\components\Transform.h" />
     <ClInclude Include="src\WindowManager.h" />
   </ItemGroup>
   <ItemGroup>
