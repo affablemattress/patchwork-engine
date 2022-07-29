@@ -58,7 +58,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)src\; $(SolutionDir)include\; $(SolutionDir)src\utilities\; $(SolutionDir)src\components\;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)src\; $(SolutionDir)include\; $(SolutionDir)src\utilities\; $(SolutionDir)src\components\; $(SolutionDir)src\math\;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -74,7 +74,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)src\; $(SolutionDir)include\; $(SolutionDir)src\utilities\; $(SolutionDir)src\components\;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)src\; $(SolutionDir)include\; $(SolutionDir)src\utilities\; $(SolutionDir)src\components\; $(SolutionDir)src\math\;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -89,7 +89,7 @@
     <ClCompile Include="src\components\Component.cpp" />
     <ClCompile Include="src\Entry Point.cpp" />
     <ClCompile Include="src\GameObject.cpp" />
-    <ClCompile Include="src\V2.cpp" />
+    <ClCompile Include="src\math\V2.cpp" />
     <ClCompile Include="src\utilities\UniqueID.cpp" />
     <ClCompile Include="src\components\Transform.cpp" />
     <ClCompile Include="src\WindowManager.cpp" />
@@ -107,7 +107,7 @@
     <ClInclude Include="include\raylib.h" />
     <ClInclude Include="include\raymath.h" />
     <ClInclude Include="include\rlgl.h" />
-    <ClInclude Include="src\V2.h" />
+    <ClInclude Include="src\math\V2.h" />
     <ClInclude Include="src\utilities\UniqueID.h" />
     <ClInclude Include="src\components\Transform.h" />
     <ClInclude Include="src\WindowManager.h" />
