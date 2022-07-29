@@ -1,4 +1,4 @@
-## Patchwork Main Framework
+## Documentation
 main function is located inside `EntryPoint.cpp`
 * * *
 ## Patchwork `namespace Patchwork`
