@@ -10,10 +10,18 @@ namespace Patchwork {
 	public:
 		Renderer::Type GetRendererType() const override;
 
-		CircleRenderer(Color color, int8_t zIndex);
+		Color GetColor() const;
+		void SetColor(Color color);
+
+		double GetRadius() const;
+		//Sets circle's radius to parameter if parameter > 0.
+		void SetRadius(double radius);
+
+		CircleRenderer(Color color, double radius, int8_t zIndex);
 		~CircleRenderer();
 	private:
 		Color color_;
+		double radius_;
 	};
 }
 

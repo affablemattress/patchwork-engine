@@ -68,8 +68,10 @@ namespace Patchwork {
 		}
 	}
 
-	RenderManager::RenderManager() 
-		: renderables_(std::vector<GameObject*>())
+	RenderManager::RenderManager(uint16_t screenWidth, uint16_t screenHeight)
+		: screenWidth_(screenWidth)
+		, screenHeight_(screenHeight)
+		, renderables_(std::vector<GameObject*>())
 		, cameraTransform_(new Transform())
 		, backgroundColor_(WHITE) {}
 	RenderManager::~RenderManager() {

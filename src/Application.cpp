@@ -10,7 +10,7 @@ namespace Patchwork {
     //Code located inside this function runs for every application.
     void Application::Run() {
         WindowManager* windowManager = new WindowManager(screenWidth_, screenHeight_, title_, targetFPS_);
-        RenderManager* renderManager = new RenderManager();
+        RenderManager* renderManager = new RenderManager(screenWidth_, screenHeight_);
 
         windowManager->InitializeWindow();
 
