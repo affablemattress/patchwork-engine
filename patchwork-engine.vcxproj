@@ -85,6 +85,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\RenderManager.cpp" />
+    <ClCompile Include="src\components\CircleRenderer.cpp" />
+    <ClCompile Include="src\components\Renderer.cpp" />
     <ClCompile Include="src\Application.cpp" />
     <ClCompile Include="src\components\Component.cpp" />
     <ClCompile Include="src\Entry Point.cpp" />
@@ -98,6 +101,9 @@
     <Library Include="lib\raylib.lib" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\RenderManager.h" />
+    <ClInclude Include="src\components\CircleRenderer.h" />
+    <ClInclude Include="src\components\Renderer.h" />
     <ClInclude Include="src\components\Component.h" />
     <ClInclude Include="src\Application.h" />
     <ClInclude Include="src\Engine.h" />
@@ -115,6 +121,9 @@
   <ItemGroup>
     <None Include=".gitignore" />
     <None Include="DOCUMENTATION.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="assets\Revolver.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
