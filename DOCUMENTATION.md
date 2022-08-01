@@ -11,7 +11,7 @@ Engine entry point function is located inside `EntryPoint.cpp`
 - **GameObject** `class GameObject` : Every entity in the scene is a GameObject. You can add functionality to the GameObjects by using components. All GameObjects must have a Transform component.
 - **Component** `class Component` : Component interface class for creating components. GetType() is a pure virtual function. All derived classes must implement it.
 	- **Transform** `class Transform : public Component` : Holds the position, rotation and scale of a GameObject. Every GameObject must have a transform component. 
-	- **Camera** `class Camera : public Component` 
+	- **Camera** `class Camera : public Component`
 	- **Renderer** `class Renderer : public Component` : Renderer interface class. Every renderer component must inherit this class since all renderers must have a Z-Index and a visibility bool. 
 		- **Circle Renderer** `class CircleRenderer : public Renderer` 
 * * *

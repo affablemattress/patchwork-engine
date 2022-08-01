@@ -18,16 +18,16 @@ namespace Patchwork {
 		transform_ = transform;
 	}
 
-	Renderer* GameObject::GetRenderer() const {
-		return renderer_;
+	CircleRenderer* GameObject::GetCircleRenderer() const {
+		return circleRenderer_;
 	}
-	void GameObject::SetRenderer(Renderer* renderer) {
-		delete renderer_;
-		renderer_ = renderer;
+	void GameObject::SetCircleRenderer(CircleRenderer* circleRenderer) {
+		delete circleRenderer_;
+		circleRenderer_ = circleRenderer;
 	}
-	void GameObject::DeleteRenderer() {
-		delete renderer_;
-		renderer_ = 0;
+	void GameObject::DeleteCircleRenderer() {
+		delete circleRenderer_;
+		circleRenderer_ = 0;
 	}
 
 	Camera* GameObject::GetCamera() const {
@@ -46,11 +46,11 @@ namespace Patchwork {
 		: kID_(UniqueID::GenerateID())
 		, tag_(tag)
 		, transform_(transform) 
-		, renderer_(0)
+		, circleRenderer_(0)
 		, camera_(0) {}
 	GameObject::~GameObject() {
 		delete transform_;
-		delete renderer_;
+		delete circleRenderer_;
 		delete camera_;
 	};
 }

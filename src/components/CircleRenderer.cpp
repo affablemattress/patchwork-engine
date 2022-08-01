@@ -4,7 +4,7 @@
 #include <raygui.h>
 
 namespace Patchwork {
-	Renderer::Type CircleRenderer::GetRendererType() const { return Renderer::Type::Circle; }
+	Component::Type CircleRenderer::GetType() const { return Component::Type::CircleRenderer; }
 
 	Color CircleRenderer::GetColor() const { return color_; }
 	void CircleRenderer::SetColor(Color color) {

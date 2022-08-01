@@ -124,6 +124,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore" />
+    <None Include="COMPONENTS.md" />
     <None Include="DOCUMENTATION.md" />
   </ItemGroup>
   <ItemGroup>

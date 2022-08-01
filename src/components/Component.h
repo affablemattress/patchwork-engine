@@ -6,7 +6,7 @@ namespace Patchwork {
 	public:
 		const enum Type {
 			Transform = 0,
-			Renderer = 1,
+			CircleRenderer = 1,
 			Camera = 2
 		};
 		virtual Type GetType() const = 0;

@@ -8,7 +8,7 @@
 namespace Patchwork {
 	class CircleRenderer : public Renderer {
 	public:
-		Renderer::Type GetRendererType() const override;
+		Component::Type GetType() const override;
 
 		Color GetColor() const;
 		void SetColor(Color color);

@@ -18,6 +18,7 @@ namespace Patchwork {
 		Transform(const V2& position, double rotation, const V2& scale);
 		//@returns Transform with position (0, 0), rotation 0, and scale 1
 		Transform();
+		Transform(Transform& transform);
 		~Transform();
 	private:
 		V2 position_;

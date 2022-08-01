@@ -2,14 +2,24 @@
 
 #include "V2.h"
 #include "M2.h"
+#include "Transform.h"
 
 #include <stdexcept>
+#include <iostream>
+
 namespace Patchwork {
-	void RenderManager::Draw(GameObject* renderable) const {
-		switch (renderable->GetRenderer()->GetRendererType()) {
-			case Renderer::Type::Circle:
-				//TODO: Add camera logic and draw.
-				break;
+	void RenderManager::Draw(GameObject* renderable, double pixelsPerUnit) const {
+		if (renderable->GetCircleRenderer()) {
+			if (renderable->GetCircleRenderer()->GetIsVisible()) {
+				Transform transform(*renderable->GetTransform());
+				transform.SetPosition(transform.GetPosition() - camera_->GetTransform()->GetPosition());
+				transform.SetPosition(V2::RotatedByDegrees(transform.GetPosition(), -camera_->GetTransform()->GetRotation()));
+				transform.SetRotation(transform.GetRotation() - camera_->GetTransform()->GetRotation());
+				DrawCircle(screenWidth_ / 2 + transform.GetPosition().GetX() * pixelsPerUnit, 
+					       screenHeight_ / 2 - transform.GetPosition().GetY() * pixelsPerUnit,
+					       renderable->GetCircleRenderer()->GetRadius() * pixelsPerUnit, 
+					       renderable->GetCircleRenderer()->GetColor());
+			}
 		}
 	}
 
@@ -18,12 +28,14 @@ namespace Patchwork {
 		BeginDrawing();
 
 		for (GameObject* renderable : *renderables_) {
-			if (renderable->GetRenderer()) {
-				if (renderable->GetRenderer()->GetIsVisible()) {
-					Draw(renderable);
-				}
+			double pixelsPerUnit = screenHeight_/ camera_->GetCamera()->GetFOVLength();
+			if (renderable->GetCircleRenderer()) {
+				Draw(renderable, pixelsPerUnit);
 			}
 		}
+
+		camera_->GetTransform()->SetRotation(camera_->GetTransform()->GetRotation() + 0.05);
+		camera_->GetCamera()->SetFOVLength(camera_->GetCamera()->GetFOVLength() + 0.05);
 
 		ClearBackground(WHITE);
 		EndDrawing();

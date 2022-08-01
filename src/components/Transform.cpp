@@ -38,5 +38,9 @@ namespace Patchwork {
 		: position_(V2(0, 0))
 		, rotation_(0)
 		, scale_({ 1, 1 }) {}
+	Transform::Transform(Transform& transform) 
+		: position_(transform.GetPosition())
+		, rotation_(transform.GetRotation())
+		, scale_(transform.GetScale()) {}
 	Transform::~Transform() {}
 }

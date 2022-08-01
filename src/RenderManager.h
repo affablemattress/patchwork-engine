@@ -11,7 +11,7 @@ namespace Patchwork {
 	class RenderManager
 	{
 	public:
-		void Draw(GameObject* gameObject) const;
+		void Draw(GameObject* gameObject, double pixelsPerUnit) const;
 		//Starts rendering all GameObjects with visible renderers.
 		void DrawFrame();
 

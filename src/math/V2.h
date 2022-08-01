@@ -2,13 +2,6 @@
 #include "M2.h"
 
 namespace Patchwork {
-	V2 operator+(const V2& v, const V2& u);
-	V2 operator-(const V2& v, const V2& u);
-	V2 operator-(const V2& v);
-	V2 operator*(V2 v, double c);
-	V2 operator*(double c, V2 v);
-	V2 operator/(V2 v, double c);
-
 	struct V2 {
 	public:
 		static double Magnitude(const V2& u);
@@ -30,5 +23,12 @@ namespace Patchwork {
 		double x_;
 		double y_;
 	};
+
+	V2 operator+(const V2& v, const V2& u);
+	V2 operator-(const V2& v, const V2& u);
+	V2 operator-(const V2& v);
+	V2 operator*(const V2& v, double c);
+	V2 operator*(double c, const V2& v);
+	V2 operator/(const V2& v, double c);
 }
 

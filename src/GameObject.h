@@ -1,7 +1,7 @@
 #pragma once
 #include "V2.h"
 #include "Transform.h"
-#include "Renderer.h"
+#include "CircleRenderer.h"
 #include "Camera.h"
 
 #include <stdint.h>
@@ -15,13 +15,11 @@ namespace Patchwork {
 		void SetTag(const char* tag);
 
 		Transform* GetTransform() const;
-		//Sets GameObject's Transform compnent to the one passed by parameter and deletes the old one.
-		void SetTransform(Transform* component);
+		void SetTransform(Transform* transform);
 
-		Renderer* GetRenderer() const;
-		//Sets GameObject's Renderer compnent to the one passed by parameter and deletes the old one.
-		void SetRenderer(Renderer* component);
-		void DeleteRenderer();
+		CircleRenderer* GetCircleRenderer() const;
+		void SetCircleRenderer(CircleRenderer* circleRenderer);
+		void DeleteCircleRenderer();
 
 		Camera* GetCamera() const;
 		void SetCamera(Camera* camera);
@@ -33,7 +31,7 @@ namespace Patchwork {
 		const uint32_t kID_;
 		const char* tag_;
 		Transform* transform_;
-		Renderer* renderer_;
+		CircleRenderer* circleRenderer_;
 		Camera* camera_;
 	};
 }
