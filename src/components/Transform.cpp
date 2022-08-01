@@ -3,6 +3,7 @@
 #include "Component.h"
 
 #include <math.h>
+#include <stdexcept>
 
 namespace Patchwork {
 	Component::Type Transform::GetType() const { return Component::Type::Transform; }
@@ -17,21 +18,25 @@ namespace Patchwork {
 		rotation_ = fmod(rotation, 360);
 	}
 	
-	double Transform::GetScale() const { return scale_; }
-	void Transform::SetScale(double scale) {
-		if (scale > 0) {
+	V2 Transform::GetScale() const { return scale_; }
+	void Transform::SetScale(const V2& scale) {
+		if (scale.GetX() > 0 && scale.GetY() > 0) {
 			scale_ = scale;
 		} 
 		else {
-			scale_ = 1;
+			throw std::invalid_argument("Transform::SetScale: arg's X or Y cannot be [<= 0]");
 		}
 	}
 
-	Transform::Transform(const V2& position, double rotation, double scale)
-		: position_(position), rotation_(fmod(rotation, 360)), scale_(1) {
-		if (scale > 0) { scale_ = scale; }
+	Transform::Transform(const V2& position, double rotation, const V2& scale)
+		: position_(position)
+		, rotation_(fmod(rotation, 360))
+		, scale_({ 1, 1 }) {
+		this->SetScale(scale);
 	}
 	Transform::Transform()
-		: position_(V2(0, 0)), rotation_(0), scale_(1) {}
+		: position_(V2(0, 0))
+		, rotation_(0)
+		, scale_({ 1, 1 }) {}
 	Transform::~Transform() {}
 }

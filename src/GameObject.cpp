@@ -4,7 +4,11 @@
 
 namespace Patchwork {
 	uint32_t GameObject::GetID() const { return kID_; }
+
 	const char* GameObject::GetTag() const { return tag_; }
+	void GameObject::SetTag(const char* tag) {
+		tag_ = tag;
+	}
 
 	Transform* GameObject::GetTransform() const {
 		return transform_;
@@ -12,10 +16,6 @@ namespace Patchwork {
 	void GameObject::SetTransform(Transform* transform) {
 		delete transform_;
 		transform_ = transform;
-	}
-	void GameObject::DeleteTransform() {
-		delete transform_;
-		transform_ = 0;
 	}
 
 	Renderer* GameObject::GetRenderer() const {
@@ -30,14 +30,28 @@ namespace Patchwork {
 		renderer_ = 0;
 	}
 
-	GameObject::GameObject(const char* tag)
+	Camera* GameObject::GetCamera() const {
+		return camera_;
+	}
+	void GameObject::SetCamera(Camera* camera) {
+		delete camera_;
+		camera_ = camera;
+	}
+	void GameObject::DeleteCamera() {
+		delete camera_;
+		camera_ = 0;
+	}
+
+	GameObject::GameObject(const char* tag, Transform* transform)
 		: kID_(UniqueID::GenerateID())
 		, tag_(tag)
-		, transform_(0) 
-		, renderer_(0) {}
+		, transform_(transform) 
+		, renderer_(0)
+		, camera_(0) {}
 	GameObject::~GameObject() {
 		delete transform_;
 		delete renderer_;
+		delete camera_;
 	};
 }
 

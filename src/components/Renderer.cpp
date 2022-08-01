@@ -11,6 +11,9 @@ namespace Patchwork {
 	}
 
 	int8_t Renderer::GetZIndex() const { return zIndex_; }
+	void Renderer::SetZIndex(int8_t zIndex) {
+		zIndex_ = zIndex;
+	}
 
 	Renderer::Renderer(int8_t zIndex) 
 		: zIndex_(zIndex)

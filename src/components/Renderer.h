@@ -16,8 +16,12 @@ namespace Patchwork {
 
 		bool GetIsVisible() const;
 		void SetIsVisible(bool isVisible);
+
 		//TO DO: Add SetZIndex()
 		int8_t GetZIndex() const;
+		void SetZIndex(int8_t zIndex) {
+			zIndex_ = zIndex;
+		}
 
 		Renderer(int8_t zIndex);
 		virtual ~Renderer();

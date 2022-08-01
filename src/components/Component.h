@@ -4,9 +4,10 @@
 namespace Patchwork {
 	class Component {
 	public:
-		const enum Type{
-			Transform = 0, 
-			Renderer = 1
+		const enum Type {
+			Transform = 0,
+			Renderer = 1,
+			Camera = 2
 		};
 		virtual Type GetType() const = 0;
 		//@return Program-wide unique uint32 ID to the component

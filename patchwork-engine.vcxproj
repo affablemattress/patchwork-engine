@@ -85,6 +85,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\math\M2.cpp" />
+    <ClCompile Include="src\components\Camera.cpp" />
     <ClCompile Include="src\RenderManager.cpp" />
     <ClCompile Include="src\components\CircleRenderer.cpp" />
     <ClCompile Include="src\components\Renderer.cpp" />
@@ -101,6 +103,8 @@
     <Library Include="lib\raylib.lib" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\math\M2.h" />
+    <ClInclude Include="src\components\Camera.h" />
     <ClInclude Include="src\RenderManager.h" />
     <ClInclude Include="src\components\CircleRenderer.h" />
     <ClInclude Include="src\components\Renderer.h" />

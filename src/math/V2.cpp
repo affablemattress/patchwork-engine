@@ -2,6 +2,25 @@
 
 #include <math.h>
 namespace Patchwork {
+	V2 operator+(const V2& v, const V2& u) {
+		return V2(v.GetX() + u.GetX(), v.GetY() + u.GetY());
+	}
+	V2 operator-(const V2& v, const V2& u) {
+		return V2(v.GetX() - u.GetX(), v.GetY() - u.GetY());
+	}
+	V2 operator-(const V2& v) {
+		return V2(-v.GetX(), -v.GetY());
+	}
+	V2 operator*(const V2& v, double c) {
+		return V2(v.GetX() * c, v.GetY() * c);
+	}
+	V2 operator*(double c, const V2& v) {
+		return V2(v.GetX() * c, v.GetY() * c);
+	}
+	V2 operator/(const V2& v, double c) {
+		return V2(v.GetX() / c, v.GetY() / c);
+	}
+	
 	double V2::Magnitude(const V2& u) {
 		return sqrt(u.GetX() * u.GetX() + u.GetY() * u.GetY());
 	}
@@ -12,24 +31,15 @@ namespace Patchwork {
 		double factor = 1 / V2::Magnitude(u);
 		return u * factor;
 	}
-	double V2::Dot(const V2& u, const V2& v) {
-		return u.GetX() * v.GetX() + v.GetY() * v.GetY();
+	V2 V2::RotatedByDegrees(const V2& v, double degrees) {
+		return Cross(M2::GetRotationMatrixByDegrees(degrees), v);
 	}
 
-	V2 V2::operator+(const V2& v) const {
-		return V2(x_ + v.GetX(), y_ + v.GetY());
+	double V2::Dot(const V2& v, const V2& u) {
+		return v.GetX() * u.GetX() + v.GetY() * u.GetY();
 	}
-	V2 V2::operator-(const V2& v) const {
-		return V2(x_ - v.GetX(), y_ - v.GetY());
-	}
-	V2 V2::operator-() const {
-		return V2(-x_, -y_);
-	}
-	V2 V2::operator*(double c) const {
-		return V2(x_ * c, y_ * c);
-	}
-	V2 V2::operator/(double c) const {
-		return V2(x_ / c, y_ / c);
+	V2 V2::Cross(const M2& m, const V2& v) {
+		return V2(v.GetX() * m.GetM11() + v.GetY() * m.GetM12(), v.GetX() * m.GetM21() + v.GetY() * m.GetM22());
 	}
 
 	double V2::GetX() const { return x_; }
@@ -41,8 +51,6 @@ namespace Patchwork {
 		y_ = y;
 	}
 
-	V2::V2() 
-		: x_(0), y_(0) {}
 	V2::V2(double x, double y) 
 		: x_(x), y_(y) {}
 	V2::~V2() {}

@@ -11,18 +11,18 @@ namespace Patchwork {
 		double GetRotation() const;
 		//Set GameObject's rotation to mod(rotation, 360).
 		void SetRotation(double rotation);
-		double GetScale() const;
-		//Set GameObject's scale to scale if scale > 0, to 1 if not.
-		void SetScale(double rotation);
+		V2 GetScale() const;
+		//@param[in] scale X&Y must be [> 0]
+		void SetScale(const V2& scale);
 
-		Transform(const V2& position, double rotation, double scale);
+		Transform(const V2& position, double rotation, const V2& scale);
 		//@returns Transform with position (0, 0), rotation 0, and scale 1
 		Transform();
 		~Transform();
 	private:
 		V2 position_;
 		double rotation_;
-		double scale_;
+		V2 scale_;
 	};
 }
 
