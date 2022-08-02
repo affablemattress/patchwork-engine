@@ -7,7 +7,8 @@ namespace Patchwork {
 		const enum Type {
 			Transform = 0,
 			CircleRenderer = 1,
-			Camera = 2
+			RectangleRenderer = 2,
+			Camera = 3
 		};
 		virtual Type GetType() const = 0;
 		//@return Program-wide unique uint32 ID to the component

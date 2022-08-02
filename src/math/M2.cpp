@@ -2,10 +2,12 @@
 
 #include <math.h>
 
+#define PI 3.14159265
+
 namespace Patchwork {
 	M2 M2::GetRotationMatrixByDegrees(double degrees) {
-		degrees = fmod(degrees, 180);
-		return M2(cos(degrees), -sin(degrees), sin(degrees), cos(degrees));
+		degrees = fmod(degrees, 360);
+		return M2(cos((degrees * PI) / 180), -sin((degrees * PI) / 180), sin((degrees * PI) / 180), cos((degrees * PI) / 180));
 	}
 
 	M2 M2::Cross(M2 m1, M2 m2) {

@@ -6,7 +6,7 @@ namespace Patchwork{
 	Component::Type Camera::GetType() const { return Component::Type::Camera; }
 
 	Color Camera::GetBackgroundColor() const { return backgroundColor_; }
-	void Camera::SetBackgroundColor(Color backgroundColor) {
+	void Camera::SetBackgroundColor(const Color& backgroundColor) {
 		backgroundColor_ = backgroundColor;
 	}
 
@@ -21,7 +21,7 @@ namespace Patchwork{
 		}
 	}
 
-	Camera::Camera(Color backgroundColor, double FOVLength)
+	Camera::Camera(const Color& backgroundColor, double FOVLength)
 		: backgroundColor_(backgroundColor)
 		, FOVLength_(FOVLength) {}
 	Camera::~Camera() {}

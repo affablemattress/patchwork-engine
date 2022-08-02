@@ -7,7 +7,7 @@ namespace Patchwork {
 	Component::Type CircleRenderer::GetType() const { return Component::Type::CircleRenderer; }
 
 	Color CircleRenderer::GetColor() const { return color_; }
-	void CircleRenderer::SetColor(Color color) {
+	void CircleRenderer::SetColor(const Color& color) {
 		color_ = color;
 	}
 
@@ -18,7 +18,7 @@ namespace Patchwork {
 		}
 	}
 
-	CircleRenderer::CircleRenderer(Color color, double radius, int8_t zIndex) 
+	CircleRenderer::CircleRenderer(const Color& color, double radius, int8_t zIndex) 
 		: color_(color)
 		, radius_(radius)
 		, Renderer(zIndex) {}

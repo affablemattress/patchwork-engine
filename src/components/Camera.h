@@ -9,12 +9,12 @@ namespace Patchwork {
 		Component::Type GetType() const;
 
 		Color GetBackgroundColor() const;
-		void SetBackgroundColor(Color backgroundColor);
+		void SetBackgroundColor(const Color& backgroundColor);
 
 		double GetFOVLength() const;
 		void SetFOVLength(double FOVLength);
 
-		Camera(Color backgroundColor, double FOVLength);
+		Camera(const Color& backgroundColor, double FOVLength);
 		~Camera();
 	private: 
 		Color backgroundColor_;

@@ -11,13 +11,13 @@ namespace Patchwork {
 		Component::Type GetType() const override;
 
 		Color GetColor() const;
-		void SetColor(Color color);
+		void SetColor(const Color& color);
 
 		double GetRadius() const;
 		//Sets circle's radius to parameter if parameter > 0.
 		void SetRadius(double radius);
 
-		CircleRenderer(Color color, double radius, int8_t zIndex);
+		CircleRenderer(const Color& color, double radius, int8_t zIndex);
 		~CircleRenderer();
 	private:
 		Color color_;

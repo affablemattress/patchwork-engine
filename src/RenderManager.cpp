@@ -5,7 +5,6 @@
 #include "Transform.h"
 
 #include <stdexcept>
-#include <iostream>
 
 namespace Patchwork {
 	void RenderManager::Draw(GameObject* renderable, double pixelsPerUnit) const {
@@ -13,12 +12,28 @@ namespace Patchwork {
 			if (renderable->GetCircleRenderer()->GetIsVisible()) {
 				Transform transform(*renderable->GetTransform());
 				transform.SetPosition(transform.GetPosition() - camera_->GetTransform()->GetPosition());
-				transform.SetPosition(V2::RotatedByDegrees(transform.GetPosition(), -camera_->GetTransform()->GetRotation()));
+				transform.SetPosition(V2::RotatedByDegrees(transform.GetPosition(), camera_->GetTransform()->GetRotation()));
 				transform.SetRotation(transform.GetRotation() - camera_->GetTransform()->GetRotation());
 				DrawCircle(screenWidth_ / 2 + transform.GetPosition().GetX() * pixelsPerUnit, 
 					       screenHeight_ / 2 - transform.GetPosition().GetY() * pixelsPerUnit,
 					       renderable->GetCircleRenderer()->GetRadius() * pixelsPerUnit, 
 					       renderable->GetCircleRenderer()->GetColor());
+			}
+		}
+		if (renderable->GetRectangleRenderer()) {
+			if (renderable->GetRectangleRenderer()->GetIsVisible()) {
+				Transform transform(*renderable->GetTransform());
+				transform.SetPosition(transform.GetPosition() - camera_->GetTransform()->GetPosition());
+				transform.SetPosition(V2::RotatedByDegrees(transform.GetPosition(), camera_->GetTransform()->GetRotation()));
+				transform.SetRotation(transform.GetRotation() - camera_->GetTransform()->GetRotation());
+				DrawRectanglePro({ static_cast<float>(screenWidth_ / 2 + transform.GetPosition().GetX() * pixelsPerUnit),
+								   static_cast<float>(screenHeight_ / 2 - transform.GetPosition().GetY() * pixelsPerUnit),
+								   static_cast<float>(renderable->GetRectangleRenderer()->GetWidth() * pixelsPerUnit),
+								   static_cast<float>(renderable->GetRectangleRenderer()->GetHeight() * pixelsPerUnit) },
+					             { static_cast<float>(renderable->GetRectangleRenderer()->GetWidth() * pixelsPerUnit) / 2,
+					               static_cast<float>(renderable->GetRectangleRenderer()->GetHeight() * pixelsPerUnit) / 2 },
+					             transform.GetRotation(),
+					             renderable->GetRectangleRenderer()->GetColor());
 			}
 		}
 	}
@@ -29,7 +44,7 @@ namespace Patchwork {
 
 		for (GameObject* renderable : *renderables_) {
 			double pixelsPerUnit = screenHeight_/ camera_->GetCamera()->GetFOVLength();
-			if (renderable->GetCircleRenderer()) {
+			if (renderable->GetCircleRenderer() || renderable->GetRectangleRenderer()) {
 				Draw(renderable, pixelsPerUnit);
 			}
 		}
