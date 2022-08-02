@@ -51,6 +51,10 @@ namespace Patchwork {
 
 		camera_->GetTransform()->SetRotation(camera_->GetTransform()->GetRotation() + 0.05);
 		camera_->GetCamera()->SetFOVLength(camera_->GetCamera()->GetFOVLength() + 0.05);
+		camera_->GetTransform()->SetPosition(renderables_->at(2)->GetTransform()->GetPosition());
+
+		renderables_->at(2)->GetTransform()->SetPosition({ renderables_->at(2)->GetTransform()->GetPosition().GetX() + 0.01,
+															   renderables_->at(2)->GetTransform()->GetPosition().GetY() });
 
 		ClearBackground(WHITE);
 		EndDrawing();
@@ -68,7 +72,7 @@ namespace Patchwork {
 	}
 
 	 //@param[in] camera must have a camera component.
-	RenderManager::RenderManager(uint16_t screenWidth, uint16_t screenHeight, const std::vector<GameObject*>* renderables, GameObject* camera)
+	RenderManager::RenderManager(uint16_t screenWidth, uint16_t screenHeight, std::vector<GameObject*>* renderables, GameObject* camera)
 		: screenWidth_(screenWidth)
 		, screenHeight_(screenHeight)
 		, renderables_(renderables) 

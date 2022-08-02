@@ -15,7 +15,7 @@ namespace Patchwork {
                                                                                       //renderable->GetRenderer()->GetZIndex() for 
                                                                                       //the Z Index ordered rendering to work properly.
 
-        GameObject* camera = new GameObject("Camera", new Transform({ 0, 0 }, 0, { 1, 1 }));
+        GameObject* camera = new GameObject("Camera", new Transform({ 5, 5 }, 0, { 1, 1 }));
         camera->SetCamera(new Camera(WHITE, 40));
         allGameObjects->push_back(camera);
 

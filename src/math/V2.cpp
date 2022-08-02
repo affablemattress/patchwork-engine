@@ -2,6 +2,9 @@
 
 #include <math.h>
 
+#define PI 3.14159265
+
+
 namespace Patchwork {
 
 	double V2::Magnitude(const V2& u) {
@@ -26,10 +29,16 @@ namespace Patchwork {
 		return V2(v.GetX() * m.GetM11() + v.GetY() * m.GetM12(), v.GetX() * m.GetM21() + v.GetY() * m.GetM22());
 	}
 
+	V2 V2::GetUnitVectorAtDegrees(double degrees) {
+		degrees = fmod(degrees, 360);
+		return V2(sin((degrees * PI) / 180), cos((degrees * PI) / 180));
+	}
+
 	double V2::GetX() const { return x_; }
 	void V2::SetX(double x) {
 		x_ = x;
 	}
+
 	double V2::GetY() const { return y_; }
 	void V2::SetY(double y) {
 		y_ = y;

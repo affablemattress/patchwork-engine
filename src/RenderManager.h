@@ -18,13 +18,13 @@ namespace Patchwork {
 		GameObject* GetCamera();
 		void SetCamera(GameObject* camera);
 
-		RenderManager(uint16_t screenWidth, uint16_t screenHeight, const std::vector<GameObject*>* renderables, GameObject* camera);
+		RenderManager(uint16_t screenWidth, uint16_t screenHeight, std::vector<GameObject*>* renderables, GameObject* camera);
 		~RenderManager();
 	private:
 		uint16_t screenWidth_;
 		uint16_t screenHeight_;
 		//Vector of renderers sorted (ascending) to their Z index.
-		const std::vector<GameObject*>* renderables_;
+		std::vector<GameObject*>* renderables_;
 		GameObject* camera_;
 	};
 }

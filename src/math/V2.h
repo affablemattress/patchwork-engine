@@ -12,6 +12,8 @@ namespace Patchwork {
 		static double Dot(const V2& v, const V2& u);
 		static V2 Cross(const M2& m, const V2& v);
 
+		static V2 GetUnitVectorAtDegrees(double degrees);
+
 		double GetX () const;
 		void SetX(double x);
 		double GetY() const;
