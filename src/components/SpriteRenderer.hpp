@@ -11,7 +11,7 @@ namespace Patchwork {
 		Component::Type GetType() const override;
 
 		Texture2D GetTexture();
-		void SetTexture(Texture2D texture);
+		void SetTexture(const Texture2D& texture);
 
 		double GetHeight() const;
 		//Sets rectangle's relative height to its scale to parameter if parameter > 0.
@@ -29,4 +29,3 @@ namespace Patchwork {
 		double height_;
 	};
 }
-

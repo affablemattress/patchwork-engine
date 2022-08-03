@@ -8,6 +8,8 @@
 
 namespace Patchwork {
     void Application::OnStart() {
+        Texture2D texture = LoadTexture("./assets/12 Frame Test.png");
+
         GameObject* rectangle = new GameObject("Rectangle", new Transform({ 0, 0 }, 0, { 1, 1 }));
         rectangle->SetRectangleRenderer(new RectangleRenderer(GRAY, 50, 50, 1));
         renderables_->push_back(rectangle);
@@ -28,17 +30,16 @@ namespace Patchwork {
         renderables_->push_back(rectangle);
         gameObjects_->push_back(rectangle);
 
-        GameObject* sprite = new GameObject("Sprite", new Transform({ 0, 0 }, 0, { 1, 1 }));
-        Texture2D texture = LoadTexture("./assets/Revolver.png");
-        sprite->SetSpriteRenderer(new SpriteRenderer(texture, 1, 1, 1));
-        renderables_->push_back(sprite);
-        gameObjects_->push_back(sprite);
+        GameObject* animatedSprite = new GameObject("Sprite", new Transform({ 0, 0 }, 0, { 5, 5 }));
+        animatedSprite->SetAnimatedSpriteRenderer(new AnimatedSpriteRenderer(texture, 1, 1, 12, 12, 1));
+        renderables_->push_back(animatedSprite);
+        gameObjects_->push_back(animatedSprite);
     }
 
     void Application::OnUpdate() {
         camera_->GetTransform()->RotateByDegrees(0.05);
         camera_->GetCamera()->SetFOVLength(camera_->GetCamera()->GetFOVLength() + 0.05);
-        renderables_->at(2)->GetTransform()->MoveTowardsVector(renderables_->at(3)->GetTransform()->GetPosition(), 0.01);
+        renderables_->at(4)->GetTransform()->MoveTowardsVector(renderables_->at(3)->GetTransform()->GetPosition(), 0.01);
     }
 
     void Application::Run() {

@@ -58,6 +58,28 @@ namespace Patchwork {
 					           WHITE);
 			}
 		}
+		else if (renderable->GetAnimatedSpriteRenderer()) {
+			if (renderable->GetAnimatedSpriteRenderer()->GetIsVisible()) {
+				Transform transform(*renderable->GetTransform());
+				transform.MoveByVector(-camera_->GetTransform()->GetPosition());
+				transform.MoveToVector(V2::RotatedByDegrees(transform.GetPosition(), camera_->GetTransform()->GetRotation()));
+				transform.RotateByDegrees(-camera_->GetTransform()->GetRotation());
+				renderable->GetAnimatedSpriteRenderer()->UpdateSprite();
+				DrawTexturePro(renderable->GetAnimatedSpriteRenderer()->GetTexture(),
+					Rectangle{ static_cast<float>((renderable->GetAnimatedSpriteRenderer()->GetTexture().width / renderable->GetAnimatedSpriteRenderer()->GetFrameCount()) * renderable->GetAnimatedSpriteRenderer()->GetCurrentFrame()),
+							   0,
+							   static_cast<float>(renderable->GetAnimatedSpriteRenderer()->GetTexture().width / renderable->GetAnimatedSpriteRenderer()->GetFrameCount()),
+							   static_cast<float>(renderable->GetAnimatedSpriteRenderer()->GetTexture().height) },
+					Rectangle{ static_cast<float>(screenWidth_ / 2 + transform.GetPosition().GetX() * pixelsPerUnit),
+							   static_cast<float>(screenHeight_ / 2 - transform.GetPosition().GetY() * pixelsPerUnit),
+							   static_cast<float>(renderable->GetAnimatedSpriteRenderer()->GetWidth() * transform.GetScale().GetX() * pixelsPerUnit),
+							   static_cast<float>(renderable->GetAnimatedSpriteRenderer()->GetHeight() * transform.GetScale().GetY() * pixelsPerUnit) },
+					Vector2{ static_cast<float>(renderable->GetAnimatedSpriteRenderer()->GetWidth() * transform.GetScale().GetX() * pixelsPerUnit) / 2,
+							 static_cast<float>(renderable->GetAnimatedSpriteRenderer()->GetHeight() * transform.GetScale().GetY() * pixelsPerUnit) / 2 },
+					transform.GetRotation(),
+					WHITE);
+			}
+		}
 	}
 
 	//Starts rendering all GameObjects with visible renderers.

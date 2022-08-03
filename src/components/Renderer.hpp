@@ -21,4 +21,3 @@ namespace Patchwork {
 		int8_t zIndex_;
 	};
 }
-

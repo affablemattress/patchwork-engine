@@ -4,6 +4,7 @@
 #include "CircleRenderer.hpp"
 #include "RectangleRenderer.hpp"
 #include "SpriteRenderer.hpp"
+#include "AnimatedSpriteRenderer.hpp"
 #include "Camera.hpp"
 
 #include <stdint.h>
@@ -31,6 +32,10 @@ namespace Patchwork {
 		void SetSpriteRenderer(SpriteRenderer* spriteRenderer);
 		void DeleteSpriteRenderer();
 
+		AnimatedSpriteRenderer* GetAnimatedSpriteRenderer() const;
+		void SetAnimatedSpriteRenderer(AnimatedSpriteRenderer* animatedSpriteRenderer);
+		void DeleteAnimatedSpriteRenderer();
+
 		Camera* GetCamera() const;
 		void SetCamera(Camera* camera);
 		void DeleteCamera();
@@ -44,6 +49,7 @@ namespace Patchwork {
 		CircleRenderer* circleRenderer_;
 		RectangleRenderer* rectangleRenderer_;
 		SpriteRenderer* spriteRenderer_;
+		AnimatedSpriteRenderer* animatedSpriteRenderer_;
 		Camera* camera_;
 	};
 }

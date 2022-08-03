@@ -6,7 +6,7 @@ namespace Patchwork {
 	Component::Type SpriteRenderer::GetType() const { return Component::Type::SpriteRenderer; }
 
 	Texture2D SpriteRenderer::GetTexture() {return texture_; }
-	void SpriteRenderer::SetTexture(Texture2D texture) {
+	void SpriteRenderer::SetTexture(const Texture2D& texture) {
 		texture_ = texture;
 	}
 
