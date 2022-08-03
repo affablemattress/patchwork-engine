@@ -1,8 +1,8 @@
-#include "RenderManager.h"
+#include "RenderManager.hpp"
 
-#include "V2.h"
-#include "M2.h"
-#include "Transform.h"
+#include "V2.hpp"
+#include "M2.hpp"
+#include "Transform.hpp"
 
 #include <stdexcept>
 #include <iostream>

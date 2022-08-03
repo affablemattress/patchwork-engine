@@ -1,4 +1,4 @@
-#include "V2.h"
+#include "V2.hpp"
 
 #include <stdexcept>
 #include <math.h>

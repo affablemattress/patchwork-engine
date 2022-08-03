@@ -1,5 +1,5 @@
 #pragma once
-#include "M2.h"
+#include "M2.hpp"
 
 namespace Patchwork {
 	struct V2 {

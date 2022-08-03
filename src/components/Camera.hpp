@@ -1,7 +1,7 @@
 #pragma once
-#include "Component.h"
+#include "Component.hpp"
 
-#include "raylib.h"
+#include <raylib.h>
 
 namespace Patchwork {
 	class Camera : public Component {

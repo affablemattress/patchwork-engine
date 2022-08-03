@@ -1,6 +1,6 @@
 #pragma once
-#include "V2.h"
-#include "Component.h"
+#include "V2.hpp"
+#include "Component.hpp"
 
 namespace Patchwork {
 	class Transform : public Component {

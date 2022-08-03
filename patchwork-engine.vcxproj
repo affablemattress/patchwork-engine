@@ -105,26 +105,26 @@
     <Library Include="lib\raylib.lib" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\components\SpriteRenderer.h" />
-    <ClInclude Include="src\components\RectangleRenderer.h" />
-    <ClInclude Include="src\math\M2.h" />
-    <ClInclude Include="src\components\Camera.h" />
-    <ClInclude Include="src\RenderManager.h" />
-    <ClInclude Include="src\components\CircleRenderer.h" />
-    <ClInclude Include="src\components\Renderer.h" />
-    <ClInclude Include="src\components\Component.h" />
-    <ClInclude Include="src\Application.h" />
+    <ClInclude Include="src\components\SpriteRenderer.hpp" />
+    <ClInclude Include="src\components\RectangleRenderer.hpp" />
+    <ClInclude Include="src\math\M2.hpp" />
+    <ClInclude Include="src\components\Camera.hpp" />
+    <ClInclude Include="src\RenderManager.hpp" />
+    <ClInclude Include="src\components\CircleRenderer.hpp" />
+    <ClInclude Include="src\components\Renderer.hpp" />
+    <ClInclude Include="src\components\Component.hpp" />
+    <ClInclude Include="src\Application.hpp" />
     <ClInclude Include="src\Engine.h" />
-    <ClInclude Include="src\GameObject.h" />
+    <ClInclude Include="src\GameObject.hpp" />
     <ClInclude Include="include\raudio.h" />
     <ClInclude Include="include\raygui.h" />
     <ClInclude Include="include\raylib.h" />
     <ClInclude Include="include\raymath.h" />
     <ClInclude Include="include\rlgl.h" />
-    <ClInclude Include="src\math\V2.h" />
-    <ClInclude Include="src\utilities\UniqueID.h" />
-    <ClInclude Include="src\components\Transform.h" />
-    <ClInclude Include="src\WindowManager.h" />
+    <ClInclude Include="src\math\V2.hpp" />
+    <ClInclude Include="src\utilities\UniqueID.hpp" />
+    <ClInclude Include="src\components\Transform.hpp" />
+    <ClInclude Include="src\WindowManager.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore" />

@@ -1,5 +1,5 @@
 #pragma once
-#include "Renderer.h"
+#include "Renderer.hpp"
 
 #include <raylib.h>
 #include <raygui.h>

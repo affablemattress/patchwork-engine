@@ -1,7 +1,7 @@
 #pragma once
 
-#include "GameObject.h"
-#include "Transform.h"
+#include "GameObject.hpp"
+#include "Transform.hpp"
 
 #include <raylib.h>
 #include <vector>

@@ -1,6 +1,6 @@
-#include "GameObject.h"
+#include "GameObject.hpp"
 
-#include "UniqueID.h"
+#include "UniqueID.hpp"
 
 namespace Patchwork {
 	uint32_t GameObject::GetID() const { return kID_; }

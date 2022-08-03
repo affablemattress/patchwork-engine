@@ -1,10 +1,10 @@
 #pragma once
-#include "V2.h"
-#include "Transform.h"
-#include "CircleRenderer.h"
-#include "RectangleRenderer.h"
-#include "SpriteRenderer.h"
-#include "Camera.h"
+#include "V2.hpp"
+#include "Transform.hpp"
+#include "CircleRenderer.hpp"
+#include "RectangleRenderer.hpp"
+#include "SpriteRenderer.hpp"
+#include "Camera.hpp"
 
 #include <stdint.h>
 

@@ -1,4 +1,4 @@
-#include "RectangleRenderer.h"
+#include "RectangleRenderer.hpp"
 
 #include <raylib.h>
 #include <stdexcept>

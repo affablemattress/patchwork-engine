@@ -1,7 +1,7 @@
-#include "Application.h"
-#include "WindowManager.h"
-#include "RenderManager.h"
-#include "Transform.h"
+#include "Application.hpp"
+#include "WindowManager.hpp"
+#include "RenderManager.hpp"
+#include "Transform.hpp"
 
 #include <raylib.h>
 #include <iostream>

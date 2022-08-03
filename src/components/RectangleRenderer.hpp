@@ -1,6 +1,6 @@
 #pragma once
 #pragma once
-#include "Renderer.h"
+#include "Renderer.hpp"
 
 #include <raylib.h>
 #include <stdint.h>

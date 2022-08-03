@@ -1,6 +1,6 @@
-#include "Transform.h"
+#include "Transform.hpp"
 
-#include "Component.h"
+#include "Component.hpp"
 
 #include <math.h>
 #include <stdexcept>

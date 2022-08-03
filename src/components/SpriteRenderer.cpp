@@ -1,4 +1,4 @@
-#include "SpriteRenderer.h"
+#include "SpriteRenderer.hpp"
 
 #include <stdexcept>
 

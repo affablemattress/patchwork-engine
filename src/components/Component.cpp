@@ -1,5 +1,5 @@
-#include "Component.h"
-#include "UniqueID.h"
+#include "Component.hpp"
+#include "UniqueID.hpp"
 
 namespace Patchwork {
 	uint32_t Component::GetID() const {
