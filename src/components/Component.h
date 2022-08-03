@@ -8,7 +8,8 @@ namespace Patchwork {
 			Transform = 0,
 			CircleRenderer = 1,
 			RectangleRenderer = 2,
-			Camera = 3
+			SpriteRenderer = 3,
+			Camera = 4
 		};
 		virtual Type GetType() const = 0;
 		//@return Program-wide unique uint32 ID to the component

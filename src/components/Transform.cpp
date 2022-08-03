@@ -6,17 +6,22 @@
 #include <stdexcept>
 
 namespace Patchwork {
-	void Transform::MoveBy(const V2& vector) {
-		position_ = position_ + vector;
-	}
-	void Transform::MoveTo(const V2& vector) {
+	void Transform::MoveToVector(const V2& vector) {
 		position_ = vector;
 	}
-	void Transform::MoveTowards(const V2& vector, double distance) {
+
+	void Transform::MoveByVector(const V2& vector) {
+		position_ = position_ + vector;
+	}
+	void Transform::MoveTowardsVector(const V2& vector, double distance) {
 		position_ = position_ + V2::Normalized(vector - position_) * distance;
 	}
 	void Transform::MoveTowardsDirection(double rotation, double distance) {
 		position_ = position_ + V2::GetUnitVectorAtDegrees(rotation) * distance;
+	}
+
+	void Transform::RotateByDegrees(double degrees) {
+		rotation_ = fmod(rotation_ + degrees, 360);
 	}
 
 	double Transform::GetUp() const { return rotation_ + 90; }

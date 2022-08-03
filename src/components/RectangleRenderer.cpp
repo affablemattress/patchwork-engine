@@ -1,7 +1,6 @@
 #include "RectangleRenderer.h"
 
 #include <raylib.h>
-#include <raygui.h>
 #include <stdexcept>
 
 namespace Patchwork {
@@ -10,16 +9,6 @@ namespace Patchwork {
 	Color RectangleRenderer::GetColor() const { return color_; }
 	void RectangleRenderer::SetColor(const Color& color) {
 		color_ = color;
-	}
-
-	double RectangleRenderer::GetHeight() const { return height_; }
-	void RectangleRenderer::SetHeight(double height) {
-		if (height > 0) {
-			height_ = height;
-		} 
-		else {
-			throw std::invalid_argument("RectangleRenderer::SetHeight: arg must be [> 0]");
-		}
 	}
 
 	double RectangleRenderer::GetWidth() const { return width_; }
@@ -32,10 +21,20 @@ namespace Patchwork {
 		}
 	}
 
-	RectangleRenderer::RectangleRenderer(const Color& color, double height, double width, int8_t zIndex)
+	double RectangleRenderer::GetHeight() const { return height_; }
+	void RectangleRenderer::SetHeight(double height) {
+		if (height > 0) {
+			height_ = height;
+		} 
+		else {
+			throw std::invalid_argument("RectangleRenderer::SetHeight: arg must be [> 0]");
+		}
+	}
+
+	RectangleRenderer::RectangleRenderer(const Color& color, double width, double height, int8_t zIndex)
 		: color_(color)
-		, height_(0)
 		, width_(0)
+		, height_(0)
 		, Renderer(zIndex) {
 		this->SetHeight(height);
 		this->SetWidth(width);

@@ -1,5 +1,6 @@
 #include "V2.h"
 
+#include <stdexcept>
 #include <math.h>
 
 #define PI 3.14159265
@@ -14,8 +15,15 @@ namespace Patchwork {
 		return u.GetX() * u.GetX() + u.GetY() * u.GetY();
 	}
 	V2 V2::Normalized(const V2& u) {
-		double factor = 1 / V2::Magnitude(u);
-		return u * factor;
+		double magnitude = V2::Magnitude(u);
+		if (magnitude != 0) {
+			double factor = 1 / magnitude;
+			return u * factor;
+		}
+		else {
+
+			throw std::invalid_argument("V2::Normalized: cannot normalize a 0 magnitude vector.");
+		}
 	}
 	V2 V2::RotatedByDegrees(const V2& v, double degrees) {
 		return Cross(M2::GetRotationMatrixByDegrees(degrees), v);
@@ -31,7 +39,7 @@ namespace Patchwork {
 
 	V2 V2::GetUnitVectorAtDegrees(double degrees) {
 		degrees = fmod(degrees, 360);
-		return V2(sin((degrees * PI) / 180), cos((degrees * PI) / 180));
+		return V2(cos((degrees * PI) / 180), sin((degrees * PI) / 180));
 	}
 
 	double V2::GetX() const { return x_; }

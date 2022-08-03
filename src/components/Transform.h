@@ -7,10 +7,12 @@ namespace Patchwork {
 	public:
 		Component::Type GetType() const override;
 
-		void MoveBy(const V2& vector);
-		void MoveTo(const V2& vector);
-		void MoveTowards(const V2& vector, double distance);
+		void MoveToVector(const V2& vector);
+		void MoveByVector(const V2& vector);
+		void MoveTowardsVector(const V2& vector, double distance);
 		void MoveTowardsDirection(double rotation, double distance);
+
+		void RotateByDegrees(double degrees);
 
 		double GetUp() const;
 		double GetRight() const;

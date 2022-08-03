@@ -13,10 +13,10 @@ namespace Patchwork {
         CloseWindow();
     }
 
-    WindowManager::WindowManager(uint16_t screenWidth, uint16_t screenHeight, const char* title, uint16_t targetFPS) 
+    WindowManager::WindowManager(uint16_t screenWidth, uint16_t screenHeight, uint16_t targetFPS, const char* title)
         : screenWidth_(screenWidth)
         , screenHeight_(screenHeight)
-        , title_(title)
-        , targetFPS_(targetFPS) {}
+        , targetFPS_(targetFPS) 
+        , title_(title) {}
     WindowManager::~WindowManager() {}
 }

@@ -85,6 +85,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\components\SpriteRenderer.cpp" />
     <ClCompile Include="src\components\RectangleRenderer.cpp" />
     <ClCompile Include="src\math\M2.cpp" />
     <ClCompile Include="src\components\Camera.cpp" />
@@ -104,6 +105,7 @@
     <Library Include="lib\raylib.lib" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\components\SpriteRenderer.h" />
     <ClInclude Include="src\components\RectangleRenderer.h" />
     <ClInclude Include="src\math\M2.h" />
     <ClInclude Include="src\components\Camera.h" />

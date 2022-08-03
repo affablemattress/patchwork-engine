@@ -3,6 +3,7 @@
 #include "Transform.h"
 #include "CircleRenderer.h"
 #include "RectangleRenderer.h"
+#include "SpriteRenderer.h"
 #include "Camera.h"
 
 #include <stdint.h>
@@ -26,6 +27,10 @@ namespace Patchwork {
 		void SetRectangleRenderer(RectangleRenderer* rectangleRenderer);
 		void DeleteRectangleRenderer();
 
+		SpriteRenderer* GetSpriteRenderer() const;
+		void SetSpriteRenderer(SpriteRenderer* spriteRenderer);
+		void DeleteSpriteRenderer();
+
 		Camera* GetCamera() const;
 		void SetCamera(Camera* camera);
 		void DeleteCamera();
@@ -38,6 +43,7 @@ namespace Patchwork {
 		Transform* transform_;
 		CircleRenderer* circleRenderer_;
 		RectangleRenderer* rectangleRenderer_;
+		SpriteRenderer* spriteRenderer_;
 		Camera* camera_;
 	};
 }

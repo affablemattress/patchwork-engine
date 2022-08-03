@@ -42,6 +42,18 @@ namespace Patchwork {
 		rectangleRenderer_ = 0;
 	}
 
+	SpriteRenderer* GameObject::GetSpriteRenderer() const {
+		return spriteRenderer_;
+	}
+	void GameObject::SetSpriteRenderer(SpriteRenderer* spriteRenderer) {
+		delete rectangleRenderer_;
+		spriteRenderer_ = spriteRenderer;
+	}
+	void GameObject::DeleteSpriteRenderer() {
+		delete spriteRenderer_;
+		spriteRenderer_ = 0;
+	}
+
 	Camera* GameObject::GetCamera() const {
 		return camera_;
 	}
@@ -60,6 +72,7 @@ namespace Patchwork {
 		, transform_(transform) 
 		, circleRenderer_(0)
 		, rectangleRenderer_(0)
+		, spriteRenderer_(0)
 		, camera_(0) {}
 	GameObject::~GameObject() {
 		delete transform_;
