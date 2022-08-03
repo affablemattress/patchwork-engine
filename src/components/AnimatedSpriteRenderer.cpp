@@ -6,7 +6,9 @@
 
 namespace Patchwork {
 	void AnimatedSpriteRenderer::UpdateSprite() {
-		currentFrame_ = static_cast<int>(floor(fmod(GetTime() - initTime_, 1) * FPS_)) % frameCount_;
+		int passedFrameCount = static_cast<int>(floor((GetTime() - currentTime_) / (1. / FPS_)));
+		currentTime_ += passedFrameCount * (1. / FPS_);
+		currentFrame_ = (currentFrame_ + passedFrameCount) % frameCount_;
 	}
 
 	int AnimatedSpriteRenderer::GetFrameCount() const {
@@ -18,7 +20,6 @@ namespace Patchwork {
 
 	Component::Type AnimatedSpriteRenderer::GetType() const { return Component::Type::AnimatedSpriteRenderer; }
 
-	//TO DO: udate these to reset FPS and current frame.
 	Texture2D AnimatedSpriteRenderer::GetTexture() { return texture_; }
 	void AnimatedSpriteRenderer::SetTexture(const Texture2D& texture, int frameCount, int FPS) {
 		if (frameCount > 0 || FPS > 0) {
@@ -51,13 +52,13 @@ namespace Patchwork {
 		}
 	}
 
-	AnimatedSpriteRenderer::AnimatedSpriteRenderer(const Texture2D& texture, double width, double height, int frameCount, int FPS, int8_t zIndex)
+	AnimatedSpriteRenderer::AnimatedSpriteRenderer(const Texture2D& texture, double width, double height, uint8_t frameCount, uint8_t FPS, int8_t zIndex)
 		: texture_(texture)
 		, width_(0)
 		, height_(0)
 		, frameCount_(0)
 		, FPS_(0)
-	    , initTime_(GetTime())
+	    , currentTime_(GetTime())
 	    , currentFrame_(0)
 		, Renderer(zIndex) {
 		this->SetHeight(height);

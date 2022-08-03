@@ -11,7 +11,6 @@ namespace Patchwork {
 		void UpdateSprite();
 
 		int GetFrameCount() const;
-
 		int GetCurrentFrame() const;
 
 		Component::Type GetType() const override;
@@ -27,17 +26,17 @@ namespace Patchwork {
 		//Sets rectangle's relative width to its scale to parameter if parameter > 0.
 		void SetWidth(double width);
 
-		AnimatedSpriteRenderer(const Texture2D& texture, double width, double height, int frameCount, int FPS, int8_t zIndex);
+		AnimatedSpriteRenderer(const Texture2D& texture, double width, double height, uint8_t frameCount, uint8_t FPS, int8_t zIndex);
 		~AnimatedSpriteRenderer();
 	private:
 		Texture2D texture_;
 		double width_;
 		double height_;
-		int frameCount_;
-		int FPS_;
+		uint8_t frameCount_;
+		uint8_t FPS_;
 
 
-		double initTime_;
-		int currentFrame_;
+		double currentTime_;
+		uint8_t currentFrame_;
 	};
 }

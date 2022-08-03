@@ -31,7 +31,7 @@ namespace Patchwork {
         gameObjects_->push_back(rectangle);
 
         GameObject* animatedSprite = new GameObject("Sprite", new Transform({ 0, 0 }, 0, { 5, 5 }));
-        animatedSprite->SetAnimatedSpriteRenderer(new AnimatedSpriteRenderer(texture, 1, 1, 12, 12, 1));
+        animatedSprite->SetAnimatedSpriteRenderer(new AnimatedSpriteRenderer(texture, 1, 1, 12, 2, 1));
         renderables_->push_back(animatedSprite);
         gameObjects_->push_back(animatedSprite);
     }
