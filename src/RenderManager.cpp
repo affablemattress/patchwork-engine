@@ -69,11 +69,6 @@ namespace Patchwork {
 			Draw(renderable, pixelsPerUnit);
 		}
 
-		camera_->GetTransform()->SetRotation(camera_->GetTransform()->GetRotation() + 0.05);
-		camera_->GetCamera()->SetFOVLength(camera_->GetCamera()->GetFOVLength() + 0.05);
-
-		renderables_->at(2)->GetTransform()->MoveTowardsVector(renderables_->at(3)->GetTransform()->GetPosition(), 0.01);
-
 		ClearBackground(WHITE);
 		EndDrawing();
 	}
