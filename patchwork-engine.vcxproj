@@ -85,6 +85,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\PhysicsManager.cpp" />
     <ClCompile Include="src\components\AnimatedSpriteRenderer.cpp" />
     <ClCompile Include="src\components\SpriteRenderer.cpp" />
     <ClCompile Include="src\components\RectangleRenderer.cpp" />
@@ -106,6 +107,7 @@
     <Library Include="lib\raylib.lib" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\PhysicsManager.h" />
     <ClInclude Include="src\components\AnimatedSpriteRenderer.hpp" />
     <ClInclude Include="src\components\SpriteRenderer.hpp" />
     <ClInclude Include="src\components\RectangleRenderer.hpp" />

@@ -10,6 +10,7 @@ namespace Patchwork {
 	public:
 		void OnStart();
 		void OnUpdate();
+		void OnCollision(GameObject* first, GameObject* second);
 
 		void Run();
 
@@ -24,5 +25,7 @@ namespace Patchwork {
 		GameObject* camera_;
 		std::vector<GameObject*>* gameObjects_;
 		std::vector<GameObject*>* renderables_;
+		std::vector<GameObject*>* collidables_;
+		std::vector<GameObject*>* rigidbodies_;
 	};
 }

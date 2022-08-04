@@ -90,6 +90,9 @@ namespace Patchwork {
 	GameObject::~GameObject() {
 		delete transform_;
 		delete circleRenderer_;
+		delete rectangleRenderer_;
+		delete spriteRenderer_;
+		delete animatedSpriteRenderer_;
 		delete camera_;
 	};
 }

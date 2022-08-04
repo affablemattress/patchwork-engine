@@ -1,6 +1,7 @@
 #include "Application.hpp"
 #include "WindowManager.hpp"
 #include "RenderManager.hpp"
+#include "PhysicsManager.h"
 #include "Transform.hpp"
 
 #include <raylib.h>
@@ -42,14 +43,20 @@ namespace Patchwork {
         renderables_->at(4)->GetTransform()->MoveTowardsVector(renderables_->at(3)->GetTransform()->GetPosition(), 0.01);
     }
 
+    void Application::OnCollision(GameObject* first, GameObject* second) {
+    
+    }
+
     void Application::Run() {
         WindowManager* windowManager = new WindowManager(screenWidth_, screenHeight_, targetFPS_, title_);
         windowManager->InitializeWindow();
-        RenderManager* renderSystem = new RenderManager(screenWidth_, screenHeight_, targetFPS_, renderables_, camera_);
 
+        RenderManager* renderManager = new RenderManager(screenWidth_, screenHeight_, targetFPS_, renderables_, camera_);
+        PhysicsManager* physicsManager = new PhysicsManager(collidables_, rigidbodies_);
         OnStart();
         while (!WindowShouldClose()) {
-            renderSystem->DrawFrame();
+            renderManager->DrawFrame();
+            physicsManager->Update();
             OnUpdate();
         }
 
@@ -62,19 +69,21 @@ namespace Patchwork {
         , screenHeight_(screenHeight)
         , targetFPS_(targetFPS) 
         , title_(title)
-        
+
         , camera_(0)
         , gameObjects_(new std::vector<GameObject*>)
-        , renderables_(new std::vector<GameObject*>) {
+        , renderables_(new std::vector<GameObject*>) 
+        , collidables_(new std::vector<GameObject*>) 
+        , rigidbodies_(new std::vector<GameObject*>) {
         camera_ = new GameObject("Camera", new Transform({ 0, 0 }, 0, { 1, 1 }));
         camera_->SetCamera(new Camera(WHITE, 40));
         gameObjects_->push_back(camera_);
     }
     Application::~Application() {
         gameObjects_->clear();
-        renderables_->clear();
-        delete camera_;
         delete gameObjects_;
         delete renderables_;
+        delete collidables_;
+        delete rigidbodies_;
     }
 }

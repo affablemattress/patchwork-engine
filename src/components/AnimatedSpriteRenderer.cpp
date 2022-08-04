@@ -5,6 +5,7 @@
 #include <stdexcept>
 
 namespace Patchwork {
+	//Updates sprite's current frame based on time passed.
 	void AnimatedSpriteRenderer::UpdateSprite() {
 		int passedFrameCount = static_cast<int>(floor((GetTime() - currentTime_) / (1. / FPS_)));
 		currentTime_ += passedFrameCount * (1. / FPS_);
