@@ -6,13 +6,13 @@
 #include <functional>
 
 namespace Patchwork {
-	class PhysicsManager
+	class PhysicsSystem
 	{
 	public:
 		void Update();
 
-		PhysicsManager(std::vector<GameObject*>* collidables, std::vector<GameObject*>* rigidbodies);
-		~PhysicsManager();
+		PhysicsSystem(std::vector<GameObject*>* collidables, std::vector<GameObject*>* rigidbodies);
+		~PhysicsSystem();
 	private:
 		std::vector<GameObject*>* collidables_;
 		std::vector<GameObject*>* rigidbodies_;

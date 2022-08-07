@@ -1,4 +1,4 @@
-#include "RenderManager.hpp"
+#include "RenderSystem.hpp"
 
 #include "V2.hpp"
 #include "M2.hpp"
@@ -8,7 +8,7 @@
 #include <iostream>
 
 namespace Patchwork {
-	void RenderManager::Draw(GameObject* renderable, double pixelsPerUnit) const {
+	void RenderSystem::Draw(GameObject* renderable, double pixelsPerUnit) const {
 		switch (renderable->GetRenderer()->GetRendererType()) {
 			case Renderer::Type::Circle:
 			{
@@ -96,7 +96,7 @@ namespace Patchwork {
 	}
 
 	//Starts rendering all GameObjects with visible renderers.
-	void RenderManager::DrawFrame() {
+	void RenderSystem::DrawFrame() {
 		BeginDrawing();
 
 		for (GameObject* renderable : *renderables_) {
@@ -108,19 +108,19 @@ namespace Patchwork {
 		EndDrawing();
 	}
 
-	GameObject* RenderManager::GetCamera() { return camera_; }
+	GameObject* RenderSystem::GetCamera() { return camera_; }
 	//@param[in] camera must have a camera component.
-	void RenderManager::SetCamera(GameObject* camera) {
+	void RenderSystem::SetCamera(GameObject* camera) {
 		if (camera->GetCamera()) {
 			camera_ = camera;
 		} 
 		else {
-			throw std::invalid_argument("RenderManager::SetCamera: arg must have a camera component");
+			throw std::invalid_argument("RenderSystem::SetCamera: arg must have a camera component");
 		}
 	}
 
 	 //@param[in] camera must have a camera component.
-	RenderManager::RenderManager(uint16_t screenWidth, uint16_t screenHeight, uint16_t targetFPS, std::vector<GameObject*>* renderables, GameObject* camera)
+	RenderSystem::RenderSystem(uint16_t screenWidth, uint16_t screenHeight, uint16_t targetFPS, std::vector<GameObject*>* renderables, GameObject* camera)
 		: screenWidth_(screenWidth)
 		, screenHeight_(screenHeight)
 		, targetFPS_(targetFPS)
@@ -128,5 +128,5 @@ namespace Patchwork {
 		, camera_(0){
 		this->SetCamera(camera);
 	}
-	RenderManager::~RenderManager() {}
+	RenderSystem::~RenderSystem() {}
 }

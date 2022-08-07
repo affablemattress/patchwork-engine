@@ -21,7 +21,6 @@ namespace Patchwork {
 			return u * factor;
 		}
 		else {
-
 			throw std::invalid_argument("V2::Normalized: cannot normalize a 0 magnitude vector.");
 		}
 	}

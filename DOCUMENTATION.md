@@ -16,6 +16,6 @@ Engine entry point function is located inside `EntryPoint.cpp`
 		- **Circle Renderer** `class CircleRenderer : public Renderer` 
 * * *
 - **Window Manager** `class WindowManager` : Handles window creation and destruction.
-- **Render Manager** `class RenderManager` : Render system. Takes in a list of current gameobjects in the scene (std::vector<GameObjects*>) and a camera (GameObject*). Iterates through the list every frame and draws all visible GameObject using GameObjects' Renderer and Transform components.
+- **Render Manager** `class RenderSystem` : Render system. Takes in a list of current gameobjects in the scene (std::vector<GameObjects*>) and a camera (GameObject*). Iterates through the list every frame and draws all visible GameObject using GameObjects' Renderer and Transform components.
 * * *
-- **Application** `class Application` : Engine creates an application instance when it starts. Then calls  `Application::Run()` to initialize the application. This class manages scene creation, handling of GameObjects and initialization of systems (WindowManager, RenderManager etc.) and their handling.
+- **Application** `class Application` : Engine creates an application instance when it starts. Then calls  `Application::Run()` to initialize the application. This class manages scene creation, handling of GameObjects and initialization of systems (WindowManager, RenderSystem etc.) and their handling.

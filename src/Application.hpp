@@ -1,6 +1,7 @@
 #pragma once
 
 #include "GameObject.hpp"
+#include "Scene.hpp"
 
 #include <stdint.h>
 #include <vector>
@@ -8,9 +9,8 @@
 namespace Patchwork {
 	class Application {
 	public:
-		void OnStart();
-		void OnUpdate();
-		void OnCollision(GameObject* first, GameObject* second);
+		void OnStart(Scene* scene);
+		void OnUpdate(Scene* scene);
 
 		void Run();
 
@@ -21,11 +21,5 @@ namespace Patchwork {
 		uint16_t screenHeight_;
 		uint16_t targetFPS_;
 		const char* title_;
-
-		GameObject* camera_;
-		std::vector<GameObject*>* gameObjects_;
-		std::vector<GameObject*>* renderables_;
-		std::vector<GameObject*>* collidables_;
-		std::vector<GameObject*>* rigidbodies_;
 	};
 }

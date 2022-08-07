@@ -7,7 +7,7 @@
 #include <vector>
 
 namespace Patchwork {
-	class RenderManager
+	class RenderSystem
 	{
 	public:
 		void Draw(GameObject* gameObject, double pixelsPerUnit) const;
@@ -16,8 +16,8 @@ namespace Patchwork {
 		GameObject* GetCamera();
 		void SetCamera(GameObject* camera);
 
-		RenderManager(uint16_t screenWidth, uint16_t screenHeight, uint16_t targetFPS, std::vector<GameObject*>* renderables, GameObject* camera);
-		~RenderManager();
+		RenderSystem(uint16_t screenWidth, uint16_t screenHeight, uint16_t targetFPS, std::vector<GameObject*>* renderables, GameObject* camera);
+		~RenderSystem();
 	private:
 		uint16_t screenWidth_;
 		uint16_t screenHeight_;

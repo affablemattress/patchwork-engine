@@ -85,13 +85,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\PhysicsManager.cpp" />
+    <ClCompile Include="src\Scene.cpp" />
+    <ClCompile Include="src\PhysicsSystem.cpp" />
     <ClCompile Include="src\components\AnimatedSpriteRenderer.cpp" />
     <ClCompile Include="src\components\SpriteRenderer.cpp" />
     <ClCompile Include="src\components\RectangleRenderer.cpp" />
     <ClCompile Include="src\math\M2.cpp" />
     <ClCompile Include="src\components\Camera.cpp" />
-    <ClCompile Include="src\RenderManager.cpp" />
+    <ClCompile Include="src\RenderSystem.cpp" />
     <ClCompile Include="src\components\CircleRenderer.cpp" />
     <ClCompile Include="src\components\Renderer.cpp" />
     <ClCompile Include="src\Application.cpp" />
@@ -107,13 +108,14 @@
     <Library Include="lib\raylib.lib" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\PhysicsManager.h" />
+    <ClInclude Include="src\Scene.hpp" />
+    <ClInclude Include="src\PhysicsSystem.h" />
     <ClInclude Include="src\components\AnimatedSpriteRenderer.hpp" />
     <ClInclude Include="src\components\SpriteRenderer.hpp" />
     <ClInclude Include="src\components\RectangleRenderer.hpp" />
     <ClInclude Include="src\math\M2.hpp" />
     <ClInclude Include="src\components\Camera.hpp" />
-    <ClInclude Include="src\RenderManager.hpp" />
+    <ClInclude Include="src\RenderSystem.hpp" />
     <ClInclude Include="src\components\CircleRenderer.hpp" />
     <ClInclude Include="src\components\Renderer.hpp" />
     <ClInclude Include="src\components\Component.hpp" />
