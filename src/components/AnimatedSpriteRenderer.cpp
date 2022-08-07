@@ -5,6 +5,8 @@
 #include <stdexcept>
 
 namespace Patchwork {
+	Renderer::Type AnimatedSpriteRenderer::GetRendererType() const { return Renderer::Type::AnimatedSprite; }
+
 	//Updates sprite's current frame based on time passed.
 	void AnimatedSpriteRenderer::UpdateSprite() {
 		int passedFrameCount = static_cast<int>(floor((GetTime() - currentTime_) / (1. / FPS_)));
@@ -18,8 +20,6 @@ namespace Patchwork {
 	int AnimatedSpriteRenderer::GetCurrentFrame() const {
 		return currentFrame_;
 	}
-
-	Component::Type AnimatedSpriteRenderer::GetType() const { return Component::Type::AnimatedSpriteRenderer; }
 
 	Texture2D AnimatedSpriteRenderer::GetTexture() { return texture_; }
 	void AnimatedSpriteRenderer::SetTexture(const Texture2D& texture, int frameCount, int FPS) {

@@ -8,7 +8,7 @@
 namespace Patchwork {
 	class SpriteRenderer : public Renderer {
 	public:
-		Component::Type GetType() const override;
+		Renderer::Type GetRendererType() const override;
 
 		Texture2D GetTexture();
 		void SetTexture(const Texture2D& texture);
@@ -22,7 +22,7 @@ namespace Patchwork {
 		void SetWidth(double width);
 
 		SpriteRenderer(const Texture2D& texture, double width, double height, int8_t zIndex);
-		~SpriteRenderer();
+		virtual ~SpriteRenderer();
 	private:
 		Texture2D texture_;
 		double width_;

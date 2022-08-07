@@ -4,7 +4,7 @@
 #include <stdexcept>
 
 namespace Patchwork {
-	Component::Type RectangleRenderer::GetType() const { return Component::Type::RectangleRenderer; }
+	Renderer::Type RectangleRenderer::GetRendererType() const { return Renderer::Type::Rectangle; }
 
 	Color RectangleRenderer::GetColor() const { return color_; }
 	void RectangleRenderer::SetColor(const Color& color) {

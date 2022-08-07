@@ -20,21 +20,9 @@ namespace Patchwork {
 		Transform* GetTransform() const;
 		void SetTransform(Transform* transform);
 
-		CircleRenderer* GetCircleRenderer() const;
-		void SetCircleRenderer(CircleRenderer* circleRenderer);
-		void DeleteCircleRenderer();
-
-		RectangleRenderer* GetRectangleRenderer() const;
-		void SetRectangleRenderer(RectangleRenderer* rectangleRenderer);
-		void DeleteRectangleRenderer();
-
-		SpriteRenderer* GetSpriteRenderer() const;
-		void SetSpriteRenderer(SpriteRenderer* spriteRenderer);
-		void DeleteSpriteRenderer();
-
-		AnimatedSpriteRenderer* GetAnimatedSpriteRenderer() const;
-		void SetAnimatedSpriteRenderer(AnimatedSpriteRenderer* animatedSpriteRenderer);
-		void DeleteAnimatedSpriteRenderer();
+		Renderer* GetRenderer() const;
+		void SetRenderer(Renderer* renderer);
+		void DeleteRenderer();
 
 		Camera* GetCamera() const;
 		void SetCamera(Camera* camera);
@@ -46,10 +34,7 @@ namespace Patchwork {
 		const uint32_t kID_;
 		const char* tag_;
 		Transform* transform_;
-		CircleRenderer* circleRenderer_;
-		RectangleRenderer* rectangleRenderer_;
-		SpriteRenderer* spriteRenderer_;
-		AnimatedSpriteRenderer* animatedSpriteRenderer_;
+		Renderer* renderer_;
 		Camera* camera_;
 	};
 }

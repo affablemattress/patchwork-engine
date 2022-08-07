@@ -4,9 +4,19 @@
 #include <stdint.h>
 
 namespace Patchwork {
-	class Renderer : public Component
-	{
+	class Renderer : public Component {
 	public:
+		const static enum Type {
+			Circle,
+			Rectangle,
+			Sprite,
+			AnimatedSprite
+		};
+
+		virtual Renderer::Type GetRendererType() const = 0;
+
+		Component::Type GetType() const;
+
 		bool GetIsVisible() const;
 		void SetIsVisible(bool isVisible);
 

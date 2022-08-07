@@ -9,75 +9,88 @@
 
 namespace Patchwork {
 	void RenderManager::Draw(GameObject* renderable, double pixelsPerUnit) const {
-		if (renderable->GetCircleRenderer()) {
-			if (renderable->GetCircleRenderer()->GetIsVisible()) {
-				Transform transform(*renderable->GetTransform());
-				transform.MoveByVector(-camera_->GetTransform()->GetPosition());
-				transform.MoveToVector(V2::RotatedByDegrees(transform.GetPosition(), camera_->GetTransform()->GetRotation()));
-				transform.RotateByDegrees(-camera_->GetTransform()->GetRotation());
-				DrawCircle(screenWidth_ / 2 + transform.GetPosition().GetX() * transform.GetScale().GetX() * pixelsPerUnit,
-					       screenHeight_ / 2 - transform.GetPosition().GetY() * transform.GetScale().GetX() * pixelsPerUnit,
-					       renderable->GetCircleRenderer()->GetRadius() * transform.GetScale().GetX() * pixelsPerUnit,
-					       renderable->GetCircleRenderer()->GetColor());
+		switch (renderable->GetRenderer()->GetRendererType()) {
+			case Renderer::Type::Circle:
+			{
+				if (renderable->GetRenderer()->GetIsVisible()) {
+					CircleRenderer* renderer = static_cast<CircleRenderer*>(renderable->GetRenderer());
+					Transform transform(*renderable->GetTransform());
+					transform.MoveByVector(-camera_->GetTransform()->GetPosition());
+					transform.MoveToVector(V2::RotatedByDegrees(transform.GetPosition(), camera_->GetTransform()->GetRotation()));
+					transform.RotateByDegrees(-camera_->GetTransform()->GetRotation());
+					DrawCircle(screenWidth_ / 2 + transform.GetPosition().GetX() * transform.GetScale().GetX() * pixelsPerUnit,
+						screenHeight_ / 2 - transform.GetPosition().GetY() * transform.GetScale().GetX() * pixelsPerUnit,
+						renderer->GetRadius() * transform.GetScale().GetX() * pixelsPerUnit,
+						renderer->GetColor());
+				}
 			}
-		}
-		else if (renderable->GetRectangleRenderer()) {
-			if (renderable->GetRectangleRenderer()->GetIsVisible()) {
-				Transform transform(*renderable->GetTransform());
-				transform.MoveByVector(-camera_->GetTransform()->GetPosition());
-				transform.MoveToVector(V2::RotatedByDegrees(transform.GetPosition(), camera_->GetTransform()->GetRotation()));
-				transform.RotateByDegrees(-camera_->GetTransform()->GetRotation());
-				DrawRectanglePro(Rectangle{ static_cast<float>(screenWidth_ / 2 + transform.GetPosition().GetX() * pixelsPerUnit),
-								            static_cast<float>(screenHeight_ / 2 - transform.GetPosition().GetY() * pixelsPerUnit),
-								            static_cast<float>(renderable->GetRectangleRenderer()->GetWidth() * transform.GetScale().GetX() * pixelsPerUnit),
-								            static_cast<float>(renderable->GetRectangleRenderer()->GetHeight() * transform.GetScale().GetY() * pixelsPerUnit) },
-								 Vector2{ static_cast<float>(renderable->GetRectangleRenderer()->GetWidth() * transform.GetScale().GetX() * pixelsPerUnit) / 2,
-					                      static_cast<float>(renderable->GetRectangleRenderer()->GetHeight() * transform.GetScale().GetY() * pixelsPerUnit) / 2 },
-					             transform.GetRotation(),
-					             renderable->GetRectangleRenderer()->GetColor());
+			break;
+			case Renderer::Type::Rectangle:
+			{
+				if (renderable->GetRenderer()->GetIsVisible()) {
+					RectangleRenderer* renderer = static_cast<RectangleRenderer*>(renderable->GetRenderer());
+					Transform transform(*renderable->GetTransform());
+					transform.MoveByVector(-camera_->GetTransform()->GetPosition());
+					transform.MoveToVector(V2::RotatedByDegrees(transform.GetPosition(), camera_->GetTransform()->GetRotation()));
+					transform.RotateByDegrees(-camera_->GetTransform()->GetRotation());
+					DrawRectanglePro(Rectangle{ static_cast<float>(screenWidth_ / 2 + transform.GetPosition().GetX() * pixelsPerUnit),
+												static_cast<float>(screenHeight_ / 2 - transform.GetPosition().GetY() * pixelsPerUnit),
+												static_cast<float>(renderer->GetWidth() * transform.GetScale().GetX() * pixelsPerUnit),
+												static_cast<float>(renderer->GetHeight() * transform.GetScale().GetY() * pixelsPerUnit) },
+						Vector2{ static_cast<float>(renderer->GetWidth() * transform.GetScale().GetX() * pixelsPerUnit) / 2,
+								 static_cast<float>(renderer->GetHeight() * transform.GetScale().GetY() * pixelsPerUnit) / 2 },
+						transform.GetRotation(),
+						renderer->GetColor());
+				}
 			}
-		}
-		else if (renderable->GetSpriteRenderer()) {
-			if (renderable->GetSpriteRenderer()->GetIsVisible()) {
-				Transform transform(*renderable->GetTransform());
-				transform.MoveByVector(-camera_->GetTransform()->GetPosition());
-				transform.MoveToVector(V2::RotatedByDegrees(transform.GetPosition(), camera_->GetTransform()->GetRotation()));
-				transform.RotateByDegrees(-camera_->GetTransform()->GetRotation());
-				DrawTexturePro(renderable->GetSpriteRenderer()->GetTexture(),
-					           Rectangle{ 0,
-						                  0,
-								          static_cast<float>(renderable->GetSpriteRenderer()->GetTexture().width),
-								          static_cast<float>(renderable->GetSpriteRenderer()->GetTexture().height)},
-					           Rectangle{ static_cast<float>(screenWidth_ / 2 + transform.GetPosition().GetX() * pixelsPerUnit),
-						                  static_cast<float>(screenHeight_ / 2 - transform.GetPosition().GetY() * pixelsPerUnit),
-						                  static_cast<float>(renderable->GetSpriteRenderer()->GetWidth() * transform.GetScale().GetX() * pixelsPerUnit),
-						                  static_cast<float>(renderable->GetSpriteRenderer()->GetHeight() * transform.GetScale().GetY() * pixelsPerUnit) },
-					           Vector2{ static_cast<float>(renderable->GetSpriteRenderer()->GetWidth() * transform.GetScale().GetX() * pixelsPerUnit) / 2,
-					                    static_cast<float>(renderable->GetSpriteRenderer()->GetHeight() * transform.GetScale().GetY() * pixelsPerUnit) / 2 },
-					           transform.GetRotation(),
-					           WHITE);
+			break;
+			case Renderer::Type::Sprite:
+			{
+				if (renderable->GetRenderer()->GetIsVisible()) {
+					SpriteRenderer* renderer = static_cast<SpriteRenderer*>(renderable->GetRenderer());
+					Transform transform(*renderable->GetTransform());
+					transform.MoveByVector(-camera_->GetTransform()->GetPosition());
+					transform.MoveToVector(V2::RotatedByDegrees(transform.GetPosition(), camera_->GetTransform()->GetRotation()));
+					transform.RotateByDegrees(-camera_->GetTransform()->GetRotation());
+					DrawTexturePro(renderer->GetTexture(),
+						Rectangle{ 0,
+								   0,
+								   static_cast<float>(renderer->GetTexture().width),
+								   static_cast<float>(renderer->GetTexture().height) },
+						Rectangle{ static_cast<float>(screenWidth_ / 2 + transform.GetPosition().GetX() * pixelsPerUnit),
+								   static_cast<float>(screenHeight_ / 2 - transform.GetPosition().GetY() * pixelsPerUnit),
+								   static_cast<float>(renderer->GetWidth() * transform.GetScale().GetX() * pixelsPerUnit),
+								   static_cast<float>(renderer->GetHeight() * transform.GetScale().GetY() * pixelsPerUnit) },
+						Vector2{ static_cast<float>(renderer->GetWidth() * transform.GetScale().GetX() * pixelsPerUnit) / 2,
+								 static_cast<float>(renderer->GetHeight() * transform.GetScale().GetY() * pixelsPerUnit) / 2 },
+						transform.GetRotation(),
+						WHITE);
+				}
 			}
-		}
-		else if (renderable->GetAnimatedSpriteRenderer()) {
-			if (renderable->GetAnimatedSpriteRenderer()->GetIsVisible()) {
-				Transform transform(*renderable->GetTransform());
-				transform.MoveByVector(-camera_->GetTransform()->GetPosition());
-				transform.MoveToVector(V2::RotatedByDegrees(transform.GetPosition(), camera_->GetTransform()->GetRotation()));
-				transform.RotateByDegrees(-camera_->GetTransform()->GetRotation());
-				renderable->GetAnimatedSpriteRenderer()->UpdateSprite();
-				DrawTexturePro(renderable->GetAnimatedSpriteRenderer()->GetTexture(),
-					Rectangle{ static_cast<float>((renderable->GetAnimatedSpriteRenderer()->GetTexture().width / renderable->GetAnimatedSpriteRenderer()->GetFrameCount()) * renderable->GetAnimatedSpriteRenderer()->GetCurrentFrame()),
-							   0,
-							   static_cast<float>(renderable->GetAnimatedSpriteRenderer()->GetTexture().width / renderable->GetAnimatedSpriteRenderer()->GetFrameCount()),
-							   static_cast<float>(renderable->GetAnimatedSpriteRenderer()->GetTexture().height) },
-					Rectangle{ static_cast<float>(screenWidth_ / 2 + transform.GetPosition().GetX() * pixelsPerUnit),
-							   static_cast<float>(screenHeight_ / 2 - transform.GetPosition().GetY() * pixelsPerUnit),
-							   static_cast<float>(renderable->GetAnimatedSpriteRenderer()->GetWidth() * transform.GetScale().GetX() * pixelsPerUnit),
-							   static_cast<float>(renderable->GetAnimatedSpriteRenderer()->GetHeight() * transform.GetScale().GetY() * pixelsPerUnit) },
-					Vector2{ static_cast<float>(renderable->GetAnimatedSpriteRenderer()->GetWidth() * transform.GetScale().GetX() * pixelsPerUnit) / 2,
-							 static_cast<float>(renderable->GetAnimatedSpriteRenderer()->GetHeight() * transform.GetScale().GetY() * pixelsPerUnit) / 2 },
-					transform.GetRotation(),
-					WHITE);
+			break;
+			case Renderer::Type::AnimatedSprite:
+			{
+				if (renderable->GetRenderer()->GetIsVisible()) {
+					AnimatedSpriteRenderer* renderer = static_cast<AnimatedSpriteRenderer*>(renderable->GetRenderer());
+					Transform transform(*renderable->GetTransform());
+					transform.MoveByVector(-camera_->GetTransform()->GetPosition());
+					transform.MoveToVector(V2::RotatedByDegrees(transform.GetPosition(), camera_->GetTransform()->GetRotation()));
+					transform.RotateByDegrees(-camera_->GetTransform()->GetRotation());
+					renderer->UpdateSprite();
+					DrawTexturePro(renderer->GetTexture(),
+						Rectangle{ static_cast<float>((renderer->GetTexture().width / renderer->GetFrameCount()) * renderer->GetCurrentFrame()),
+								   0,
+								   static_cast<float>(renderer->GetTexture().width / renderer->GetFrameCount()),
+								   static_cast<float>(renderer->GetTexture().height) },
+						Rectangle{ static_cast<float>(screenWidth_ / 2 + transform.GetPosition().GetX() * pixelsPerUnit),
+								   static_cast<float>(screenHeight_ / 2 - transform.GetPosition().GetY() * pixelsPerUnit),
+								   static_cast<float>(renderer->GetWidth() * transform.GetScale().GetX() * pixelsPerUnit),
+								   static_cast<float>(renderer->GetHeight() * transform.GetScale().GetY() * pixelsPerUnit) },
+						Vector2{ static_cast<float>(renderer->GetWidth() * transform.GetScale().GetX() * pixelsPerUnit) / 2,
+								 static_cast<float>(renderer->GetHeight() * transform.GetScale().GetY() * pixelsPerUnit) / 2 },
+						transform.GetRotation(),
+						WHITE);
+				}
 			}
 		}
 	}

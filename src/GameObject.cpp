@@ -18,52 +18,16 @@ namespace Patchwork {
 		transform_ = transform;
 	}
 
-	CircleRenderer* GameObject::GetCircleRenderer() const {
-		return circleRenderer_;
+	Renderer* GameObject::GetRenderer() const {
+		return renderer_;
 	}
-	void GameObject::SetCircleRenderer(CircleRenderer* circleRenderer) {
-		delete circleRenderer_;
-		circleRenderer_ = circleRenderer;
+	void GameObject::SetRenderer(Renderer* renderer) {
+		delete renderer_;
+		renderer_ = renderer;
 	}
-	void GameObject::DeleteCircleRenderer() {
-		delete circleRenderer_;
-		circleRenderer_ = 0;
-	}
-
-	RectangleRenderer* GameObject::GetRectangleRenderer() const {
-		return rectangleRenderer_;
-	}
-	void GameObject::SetRectangleRenderer(RectangleRenderer* rectangleRenderer) {
-		delete rectangleRenderer_;
-		rectangleRenderer_ = rectangleRenderer;
-	}
-	void GameObject::DeleteRectangleRenderer() {
-		delete rectangleRenderer_;
-		rectangleRenderer_ = 0;
-	}
-
-	SpriteRenderer* GameObject::GetSpriteRenderer() const {
-		return spriteRenderer_;
-	}
-	void GameObject::SetSpriteRenderer(SpriteRenderer* spriteRenderer) {
-		delete rectangleRenderer_;
-		spriteRenderer_ = spriteRenderer;
-	}
-	void GameObject::DeleteSpriteRenderer() {
-		delete spriteRenderer_;
-		spriteRenderer_ = 0;
-	}
-
-	AnimatedSpriteRenderer* GameObject::GetAnimatedSpriteRenderer() const {
-		return animatedSpriteRenderer_;
-	}
-	void GameObject::SetAnimatedSpriteRenderer(AnimatedSpriteRenderer* animatedSpriteRenderer) {
-		delete rectangleRenderer_;
-		animatedSpriteRenderer_ = animatedSpriteRenderer;
-	}
-	void GameObject::DeleteAnimatedSpriteRenderer() {
-		delete animatedSpriteRenderer_;
-		animatedSpriteRenderer_ = 0;
+	void GameObject::DeleteRenderer() {
+		delete renderer_;
+		renderer_ = 0;
 	}
 
 	Camera* GameObject::GetCamera() const {
@@ -82,17 +46,11 @@ namespace Patchwork {
 		: kID_(UniqueID::GenerateID())
 		, tag_(tag)
 		, transform_(transform) 
-		, circleRenderer_(0)
-		, rectangleRenderer_(0)
-		, spriteRenderer_(0)
-		, animatedSpriteRenderer_(0)
+		, renderer_(0)
 		, camera_(0) {}
 	GameObject::~GameObject() {
 		delete transform_;
-		delete circleRenderer_;
-		delete rectangleRenderer_;
-		delete spriteRenderer_;
-		delete animatedSpriteRenderer_;
+		delete renderer_;
 		delete camera_;
 	};
 }

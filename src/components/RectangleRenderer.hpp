@@ -8,7 +8,7 @@
 namespace Patchwork {
 	class RectangleRenderer : public Renderer {
 	public:
-		Component::Type GetType() const override;
+		Renderer::Type GetRendererType() const override;
 
 		Color GetColor() const;
 		void SetColor(const Color& color);
@@ -22,7 +22,7 @@ namespace Patchwork {
 		void SetWidth(double width);
 
 		RectangleRenderer(const Color& color, double width, double height, int8_t zIndex);
-		~RectangleRenderer();
+		virtual ~RectangleRenderer();
 	private:
 		Color color_;
 		double width_;

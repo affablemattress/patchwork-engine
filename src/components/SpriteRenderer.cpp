@@ -3,7 +3,7 @@
 #include <stdexcept>
 
 namespace Patchwork {
-	Component::Type SpriteRenderer::GetType() const { return Component::Type::SpriteRenderer; }
+	Renderer::Type SpriteRenderer::GetRendererType() const { return Renderer::Type::Sprite; }
 
 	Texture2D SpriteRenderer::GetTexture() {return texture_; }
 	void SpriteRenderer::SetTexture(const Texture2D& texture) {

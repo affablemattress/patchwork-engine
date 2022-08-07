@@ -9,6 +9,8 @@ namespace Patchwork {
 	class PhysicsManager
 	{
 	public:
+		void Update();
+
 		PhysicsManager(std::vector<GameObject*>* collidables, std::vector<GameObject*>* rigidbodies);
 		~PhysicsManager();
 	private:

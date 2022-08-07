@@ -8,12 +8,12 @@
 namespace Patchwork {
 	class AnimatedSpriteRenderer : public Renderer {
 	public:
+		Renderer::Type GetRendererType() const override;
+
 		void UpdateSprite();
 
 		int GetFrameCount() const;
 		int GetCurrentFrame() const;
-
-		Component::Type GetType() const override;
 
 		Texture2D GetTexture();
 		void SetTexture(const Texture2D& texture, int frameCount, int FPS);
@@ -27,7 +27,7 @@ namespace Patchwork {
 		void SetWidth(double width);
 
 		AnimatedSpriteRenderer(const Texture2D& texture, double width, double height, uint8_t frameCount, uint8_t FPS, int8_t zIndex);
-		~AnimatedSpriteRenderer();
+		virtual ~AnimatedSpriteRenderer();
 	private:
 		Texture2D texture_;
 		double width_;
